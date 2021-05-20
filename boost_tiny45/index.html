@@ -14,7 +14,7 @@
     
     
       
-        <title>Wireless Power Transfer - Project-Documentations</title>
+        <title>Boost & Battery Monitoring - Project-Documentations</title>
       
     
     
@@ -58,7 +58,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#msp430-project-with-wireless-power-transfer" class="md-skip">
+        <a href="#battery-level-monitoring-and-boost-based-on-attiny45" class="md-skip">
           Skip to content
         </a>
       
@@ -87,7 +87,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Wireless Power Transfer
+              Boost & Battery Monitoring
             
           </span>
         </div>
@@ -180,6 +180,21 @@
 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../wpt/" class="md-nav__link">
+        Wireless Power Transfer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -191,12 +206,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Wireless Power Transfer
+          Boost & Battery Monitoring
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Wireless Power Transfer
+        Boost & Battery Monitoring
       </a>
       
         
@@ -220,13 +235,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#block-diagram" class="md-nav__link">
-    BLOCK DIAGRAM
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#schematic" class="md-nav__link">
     SCHEMATIC
   </a>
@@ -234,15 +242,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#board-layout" class="md-nav__link">
-    BOARD LAYOUT
+  <a href="#layout" class="md-nav__link">
+    LAYOUT
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#completed-pcb-with-candles" class="md-nav__link">
-    COMPLETED PCB WITH CANDLES
+  <a href="#completed-pcb" class="md-nav__link">
+    COMPLETED PCB
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fully-cased" class="md-nav__link">
+    FULLY-CASED
   </a>
   
 </li>
@@ -258,21 +273,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../boost_tiny45/" class="md-nav__link">
-        Boost & Battery Monitoring
-      </a>
     </li>
   
 
@@ -324,13 +324,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#block-diagram" class="md-nav__link">
-    BLOCK DIAGRAM
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#schematic" class="md-nav__link">
     SCHEMATIC
   </a>
@@ -338,15 +331,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#board-layout" class="md-nav__link">
-    BOARD LAYOUT
+  <a href="#layout" class="md-nav__link">
+    LAYOUT
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#completed-pcb-with-candles" class="md-nav__link">
-    COMPLETED PCB WITH CANDLES
+  <a href="#completed-pcb" class="md-nav__link">
+    COMPLETED PCB
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fully-cased" class="md-nav__link">
+    FULLY-CASED
   </a>
   
 </li>
@@ -371,106 +371,79 @@
               
                 
                 
-                <h1 id="msp430-project-with-wireless-power-transfer"><strong>MSP430 Project with Wireless Power Transfer</strong></h1>
+                <h1 id="battery-level-monitoring-and-boost-based-on-attiny45"><strong>BATTERY LEVEL MONITORING AND BOOST BASED ON ATtiny45</strong></h1>
 <h2 id="objective"><strong>OBJECTIVE</strong></h2>
-<p>A wirelessly powered artwork with warm-white leds and flexible string of leds inside a fish bowl, controlled using a <strong>MSP430</strong> microcontroller.
-Power is transferred wirelessly using two coils, one used for transmitting and other for receiving.</p>
-<h2 id="block-diagram"><strong>BLOCK DIAGRAM</strong></h2>
-<p><img alt="Block Diagram" src="../images/BLOCK_DIAGRAM_V3.png" /></p>
+<p>A boost converter along with auto power cut-off, with an indication for low battery is implemented using ATtiny45 microcontroller. The project was developed to help visually impaired students for carrying out science based optical bench experiments.</p>
 <h2 id="schematic"><strong>SCHEMATIC</strong></h2>
-<p><img alt="Schematic Diagram" src="../images/SCHEMATIC_V4.png" /></p>
-<h2 id="board-layout"><strong>BOARD LAYOUT</strong></h2>
-<p><img alt="Layout" src="../images/LAYOUT_V4.png" /></p>
-<h2 id="completed-pcb-with-candles"><strong>COMPLETED PCB WITH CANDLES</strong></h2>
-<p><img alt="Completed PCB" src="../images/COMPLETED.jpg" /></p>
+<p><img alt="Schematic" src="../images/schematic_boost.png" /></p>
+<h2 id="layout"><strong>LAYOUT</strong></h2>
+<p><img alt="Layout" src="../images/layout_boost.png" /></p>
+<h2 id="completed-pcb"><strong>COMPLETED PCB</strong></h2>
+<p><img alt="Completed_1" src="../images/boost_completed_1.jpg" /></p>
+<p><img alt="Completed_2" src="../images/boost_completed_2.jpg" /></p>
+<h2 id="fully-cased"><strong>FULLY-CASED</strong></h2>
+<p><em>...to be updated</em></p>
 <h2 id="code"><strong>CODE</strong></h2>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;msp430.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#define feedback A3</span>
+<span class="cp">#define btfd     A1</span>
+<span class="cp">#define buzzer   1</span>
+<span class="cp">#define F_CPU 8000000UL</span>
+<span class="cp">#include</span> <span class="cpf">&lt;avr/io.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;util/delay.h&gt;</span><span class="cp"></span>
 
-<span class="cp">#define LED        BIT1                        </span><span class="c1">// LED Strip -&gt; P2.1</span>
-<span class="cp">#define UP        1                            </span><span class="c1">//Increasing Brightness </span>
-<span class="cp">#define DOWN      0                            </span><span class="c1">//Decreasing Brightness</span>
-<span class="cp">#define BLINK     2                            </span><span class="c1">// For blink of leds</span>
+<span class="cp">#define max_pwm     128    </span><span class="c1">//</span>
+<span class="cp">#define reqVol      930*0.25   </span><span class="c1">//0.35V</span>
+<span class="cp">#define reqbattery  688</span>
 
+<span class="kr">float</span> <span class="n">reading</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kr">float</span> <span class="n">bttryvol</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief</span>
-<span class="cm"> * These settings are wrt enabling TIMER1 on Lunchbox</span>
-<span class="cm"> **/</span>
-<span class="kt">void</span> <span class="nf">register_settings_for_TIMER1</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">P2DIR</span> <span class="o">|=</span> <span class="n">LED</span><span class="p">;</span>                          <span class="c1">// LED -&gt; Output</span>
-    <span class="n">P2SEL</span> <span class="o">|=</span> <span class="n">LED</span><span class="p">;</span>                          <span class="c1">// LED -&gt; Select Timer Output</span>
+<span class="kr">void</span> <span class="nb">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// put your setup code here, to run once:</span>
+  <span class="n">DDRB</span> <span class="o">|=</span> <span class="mh">0x01</span> <span class="p">;</span>  <span class="c1">//PB0 as output</span>
+  <span class="n">TCCR1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">CTC1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">PWM1A</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">COM1A0</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">CS10</span><span class="p">);</span>
+  <span class="n">TCCR1</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">((</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">CS13</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">CS12</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">CS11</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">COM1A1</span><span class="p">));</span>
+  <span class="n">OCR1C</span> <span class="o">=</span> <span class="mh">0xFF</span><span class="p">;</span> <span class="c1">//top = 255;</span>
+  <span class="n">OCR1A</span> <span class="o">=</span> <span class="mi">231</span><span class="p">;</span>
 
-    <span class="n">TA1CCR0</span> <span class="o">=</span> <span class="mi">255</span><span class="p">;</span>                         <span class="c1">// Set Timer0 PWM Period</span>
-    <span class="n">TA1CCTL1</span> <span class="o">=</span> <span class="n">OUTMOD_7</span><span class="p">;</span>                   <span class="c1">// Set TA1.1 Waveform Mode - Clear on Compare, Set on Overflow</span>
-    <span class="n">TA1CCR1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                           <span class="c1">// Set TA1.1 PWM duty cycle</span>
-    <span class="n">TA1CCTL0</span> <span class="o">=</span> <span class="n">CCIE</span><span class="p">;</span>                       <span class="c1">// CCR0 Enable Interrupt</span>
-    <span class="n">TA1CTL</span> <span class="o">=</span> <span class="n">TASSEL_2</span> <span class="o">+</span> <span class="n">MC_1</span><span class="p">;</span>              <span class="c1">// Timer Clock -&gt; SMCLK, Mode -&gt; Up</span>
+  <span class="nf">analogReference</span><span class="p">(</span><span class="kr">INTERNAL1V1</span><span class="p">);</span>
+  <span class="nf">pinMode</span><span class="p">(</span><span class="n">feedback</span><span class="p">,</span> <span class="kr">INPUT</span><span class="p">);</span>
+  <span class="nf">pinMode</span><span class="p">(</span><span class="n">btfd</span><span class="p">,</span> <span class="kr">INPUT</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="k">volatile</span> <span class="kt">int</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">UP</span><span class="p">;</span>
-<span class="k">volatile</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                    <span class="c1">//for delay between change of dutycycle</span>
-<span class="k">volatile</span> <span class="kt">int</span> <span class="n">count2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                   <span class="c1">//for delay between blinking</span>
-<span class="k">volatile</span> <span class="kt">int</span> <span class="n">count3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                   <span class="c1">//for number of blinks between pwm</span>
+<span class="kr">void</span> <span class="nb">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// put your main code here, to run repeatedly:</span>
+  <span class="n">bttryvol</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">reading</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span> <span class="kr">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">256</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="n">reading</span> <span class="o">+=</span> <span class="nf">analogRead</span><span class="p">(</span><span class="n">feedback</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">reading</span> <span class="o">/=</span> <span class="mi">256</span><span class="p">;</span>  
+  <span class="k">for</span><span class="p">(</span> <span class="kr">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">256</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+    <span class="n">bttryvol</span> <span class="o">+=</span> <span class="nf">analogRead</span><span class="p">(</span><span class="n">btfd</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">bttryvol</span> <span class="o">/=</span> <span class="mi">256</span><span class="p">;</span>
 
-<span class="cm">/*brief entry point for TIMER1_interrupt vector */</span>
-<span class="cp">#pragma vector = TIMER1_A0_VECTOR</span>
-<span class="n">__interrupt</span> <span class="kt">void</span> <span class="n">Timer_A</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-   <span class="n">count</span><span class="o">++</span><span class="p">;</span>                 
-   <span class="k">if</span><span class="p">(</span><span class="n">count</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">){</span>  <span class="c1">//enter if after 100 interrupts</span>
-       <span class="k">switch</span><span class="p">(</span><span class="n">dir</span><span class="p">){</span>
-           <span class="k">case</span> <span class="nl">UP</span><span class="p">:</span>
-               <span class="n">TA1CCR1</span> <span class="o">=</span> <span class="n">TA1CCR1</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>             <span class="c1">//increment CCR1</span>
-               <span class="k">if</span><span class="p">(</span><span class="n">TA1CCR1</span><span class="o">&gt;</span><span class="n">TA1CCR0</span><span class="p">){</span>
-                   <span class="n">dir</span> <span class="o">=</span> <span class="n">BLINK</span><span class="p">;</span>                 <span class="c1">//change dir to BLINK</span>
-                   <span class="n">count2</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>                    <span class="c1">//initialize count2</span>
-                   <span class="n">count3</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>                   <span class="c1">//initialize count3</span>
-               <span class="p">}</span>
-               <span class="k">break</span><span class="p">;</span>
-           <span class="k">case</span> <span class="nl">BLINK</span><span class="p">:</span>
-               <span class="n">count2</span><span class="o">++</span><span class="p">;</span>
-            <span class="c1">//    if(count2&gt;10){                //do not change state of leds till count2 becomes 10</span>
-                   <span class="n">count3</span><span class="o">--</span><span class="p">;</span>                    <span class="c1">//decrement no. of blinks</span>
-                   <span class="k">if</span><span class="p">(</span><span class="n">count3</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>      
-                      <span class="k">if</span><span class="p">(</span><span class="n">TA1CCR1</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
-                          <span class="n">TA1CCR1</span> <span class="o">=</span> <span class="mi">255</span><span class="p">;</span>        <span class="c1">//full brightness</span>
-                      <span class="k">else</span><span class="p">{</span>
-                          <span class="n">TA1CCR1</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>            <span class="c1">//zero brightness</span>
-                      <span class="p">}</span>
-                   <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-                      <span class="n">TA1CCR1</span><span class="o">=</span><span class="mi">255</span><span class="p">;</span>              <span class="c1">//full brightness</span>
-                      <span class="n">dir</span> <span class="o">=</span> <span class="n">DOWN</span><span class="p">;</span>               <span class="c1">//change dir to decresing brightness</span>
-                   <span class="p">}</span>
-                   <span class="n">count2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>   
-               <span class="p">}</span>
-               <span class="k">break</span><span class="p">;</span>
-           <span class="k">case</span> <span class="nl">DOWN</span><span class="p">:</span>
-               <span class="n">TA1CCR1</span> <span class="o">=</span> <span class="n">TA1CCR1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>           <span class="c1">//decrement CCR1</span>
-               <span class="k">if</span><span class="p">(</span><span class="n">TA1CCR1</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
-                   <span class="n">dir</span> <span class="o">=</span> <span class="n">UP</span><span class="p">;</span>                    <span class="c1">//change direction to increasing</span>
-               <span class="p">}</span>
-               <span class="k">break</span><span class="p">;</span>
-       <span class="p">}</span>
-       <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>   
- <span class="p">}</span>
-<span class="p">}</span>
-<span class="c1">//@brief entry point for the code/</span>
-<span class="kt">void</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">P1DIR</span> <span class="o">|=</span> <span class="mh">0xFF</span><span class="p">;</span>
-    <span class="k">volatile</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>                    <span class="c1">// volatile to prevent optimization</span>
-        <span class="kt">uint32_t</span> <span class="n">lfsr</span> <span class="o">=</span> <span class="mh">0x81283723</span><span class="p">;</span>
-        <span class="kt">uint32_t</span> <span class="n">bit</span> <span class="o">=</span> <span class="mh">0x00000000</span><span class="p">;</span>
+  <span class="k">if</span><span class="p">(</span> <span class="n">bttryvol</span> <span class="o">&lt;</span> <span class="n">reqbattery</span> <span class="p">){</span>
+    <span class="n">TCCR1</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="p">((</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">CS13</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">CS12</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">CS11</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">CS10</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">PWM1A</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">COM1A0</span><span class="p">)</span><span class="o">|</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">COM1A1</span><span class="p">));</span>
+    <span class="nf">pinMode</span><span class="p">(</span><span class="n">buzzer</span><span class="p">,</span> <span class="kr">OUTPUT</span><span class="p">);</span>
+    <span class="nf">digitalWrite</span><span class="p">(</span><span class="n">buzzer</span><span class="p">,</span><span class="kr">HIGH</span><span class="p">);</span>
+    <span class="n">_delay_ms</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="nf">digitalWrite</span><span class="p">(</span><span class="n">buzzer</span><span class="p">,</span> <span class="kr">LOW</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span> <span class="n">bttryvol</span> <span class="o">&lt;</span> <span class="n">reqbattery</span> <span class="p">);</span>
+  <span class="p">}</span>
 
-    <span class="n">WDTCTL</span> <span class="o">=</span> <span class="n">WDTPW</span> <span class="o">|</span> <span class="n">WDTHOLD</span><span class="p">;</span>                   <span class="c1">// Stop watchdog timer</span>
-    <span class="n">register_settings_for_TIMER1</span><span class="p">();</span> 
-    <span class="n">__bis_SR_register</span><span class="p">(</span><span class="n">GIE</span><span class="p">);</span>                     <span class="c1">// Enable CPU Interrupt</span>
-    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
-        <span class="n">P1OUT</span> <span class="o">=</span> <span class="n">lfsr</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">;</span>                    <span class="c1">// toggle P1.0</span>
-        <span class="n">bit</span> <span class="o">=</span> <span class="p">((</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">21</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">0</span><span class="p">));</span>
-        <span class="n">lfsr</span> <span class="o">=</span> <span class="p">(</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">bit</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">);</span>
-        <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2500</span><span class="p">;</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">);</span>                  <span class="c1">// delay</span>
-    <span class="p">}</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">reading</span> <span class="o">&lt;</span> <span class="n">reqVol</span><span class="p">){</span>
+    <span class="n">OCR1A</span><span class="o">--</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">reading</span> <span class="o">&gt;</span> <span class="n">reqVol</span><span class="p">){</span>
+    <span class="n">OCR1A</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">OCR1A</span> <span class="o">&lt;=</span> <span class="n">max_pwm</span><span class="p">){</span>
+    <span class="n">OCR1A</span> <span class="o">=</span> <span class="n">max_pwm</span><span class="p">;</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
                 
@@ -490,7 +463,7 @@ Power is transferred wirelessly using two coils, one used for transmitting and o
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../Hearty_attiny10/" class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../wpt/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -499,19 +472,19 @@ Power is transferred wirelessly using two coils, one used for transmitting and o
               <span class="md-footer__direction">
                 Previous
               </span>
-              ATtiny10 Based Hearty
+              Wireless Power Transfer
             </div>
           </div>
         </a>
       
       
-        <a href="../boost_tiny45/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href=".." class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Boost & Battery Monitoring
+              Home
             </div>
           </div>
           <div class="md-footer__button md-icon">
