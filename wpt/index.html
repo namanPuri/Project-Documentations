@@ -354,95 +354,96 @@ Power is transferred wirelessly using two coils, one used for transmitting and o
 <h2 id="completed-pcb-with-candles"><strong>COMPLETED PCB WITH CANDLES</strong></h2>
 <p><img alt="Completed PCB" src="/images/COMPLETED.jpg" /></p>
 <h2 id="code"><strong>CODE</strong></h2>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;msp430.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp"></span>
+<pre><code class="language-C">
+#include &lt;msp430.h&gt;
+#include &lt;stdint.h&gt;
 
-<span class="cp">#define LED        BIT1                        </span><span class="c1">// LED Strip -&gt; P2.1</span>
-<span class="cp">#define UP        1                            </span><span class="c1">//Increasing Brightness </span>
-<span class="cp">#define DOWN      0                            </span><span class="c1">//Decreasing Brightness</span>
-<span class="cp">#define BLINK     2                            </span><span class="c1">// For blink of leds</span>
+#define LED        BIT1                        // LED Strip -&gt; P2.1
+#define UP        1                            //Increasing Brightness 
+#define DOWN      0                            //Decreasing Brightness
+#define BLINK     2                            // For blink of leds
 
 
-<span class="cm">/**</span>
-<span class="cm"> * @brief</span>
-<span class="cm"> * These settings are wrt enabling TIMER1 on Lunchbox</span>
-<span class="cm"> **/</span>
-<span class="kt">void</span> <span class="nf">register_settings_for_TIMER1</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="n">P2DIR</span> <span class="o">|=</span> <span class="n">LED</span><span class="p">;</span>                          <span class="c1">// LED -&gt; Output</span>
-    <span class="n">P2SEL</span> <span class="o">|=</span> <span class="n">LED</span><span class="p">;</span>                          <span class="c1">// LED -&gt; Select Timer Output</span>
+/**
+ * @brief
+ * These settings are wrt enabling TIMER1 on Lunchbox
+ **/
+void register_settings_for_TIMER1()
+{
+    P2DIR |= LED;                          // LED -&gt; Output
+    P2SEL |= LED;                          // LED -&gt; Select Timer Output
 
-    <span class="n">TA1CCR0</span> <span class="o">=</span> <span class="mi">255</span><span class="p">;</span>                         <span class="c1">// Set Timer0 PWM Period</span>
-    <span class="n">TA1CCTL1</span> <span class="o">=</span> <span class="n">OUTMOD_7</span><span class="p">;</span>                   <span class="c1">// Set TA1.1 Waveform Mode - Clear on Compare, Set on Overflow</span>
-    <span class="n">TA1CCR1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                           <span class="c1">// Set TA1.1 PWM duty cycle</span>
-    <span class="n">TA1CCTL0</span> <span class="o">=</span> <span class="n">CCIE</span><span class="p">;</span>                       <span class="c1">// CCR0 Enable Interrupt</span>
-    <span class="n">TA1CTL</span> <span class="o">=</span> <span class="n">TASSEL_2</span> <span class="o">+</span> <span class="n">MC_1</span><span class="p">;</span>              <span class="c1">// Timer Clock -&gt; SMCLK, Mode -&gt; Up</span>
-<span class="p">}</span>
+    TA1CCR0 = 255;                         // Set Timer0 PWM Period
+    TA1CCTL1 = OUTMOD_7;                   // Set TA1.1 Waveform Mode - Clear on Compare, Set on Overflow
+    TA1CCR1 = 0;                           // Set TA1.1 PWM duty cycle
+    TA1CCTL0 = CCIE;                       // CCR0 Enable Interrupt
+    TA1CTL = TASSEL_2 + MC_1;              // Timer Clock -&gt; SMCLK, Mode -&gt; Up
+}
 
-<span class="k">volatile</span> <span class="kt">int</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">UP</span><span class="p">;</span>
-<span class="k">volatile</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                    <span class="c1">//for delay between change of dutycycle</span>
-<span class="k">volatile</span> <span class="kt">int</span> <span class="n">count2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                   <span class="c1">//for delay between blinking</span>
-<span class="k">volatile</span> <span class="kt">int</span> <span class="n">count3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                   <span class="c1">//for number of blinks between pwm</span>
+volatile int dir = UP;
+volatile int count = 0;                    //for delay between change of dutycycle
+volatile int count2 = 0;                   //for delay between blinking
+volatile int count3 = 0;                   //for number of blinks between pwm
 
-<span class="cm">/*brief entry point for TIMER1_interrupt vector */</span>
-<span class="cp">#pragma vector = TIMER1_A0_VECTOR</span>
-<span class="n">__interrupt</span> <span class="kt">void</span> <span class="n">Timer_A</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
-   <span class="n">count</span><span class="o">++</span><span class="p">;</span>                 
-   <span class="k">if</span><span class="p">(</span><span class="n">count</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">){</span>  <span class="c1">//enter if after 100 interrupts</span>
-       <span class="k">switch</span><span class="p">(</span><span class="n">dir</span><span class="p">){</span>
-           <span class="k">case</span> <span class="nl">UP</span><span class="p">:</span>
-               <span class="n">TA1CCR1</span> <span class="o">=</span> <span class="n">TA1CCR1</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>             <span class="c1">//increment CCR1</span>
-               <span class="k">if</span><span class="p">(</span><span class="n">TA1CCR1</span><span class="o">&gt;</span><span class="n">TA1CCR0</span><span class="p">){</span>
-                   <span class="n">dir</span> <span class="o">=</span> <span class="n">BLINK</span><span class="p">;</span>                 <span class="c1">//change dir to BLINK</span>
-                   <span class="n">count2</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>                    <span class="c1">//initialize count2</span>
-                   <span class="n">count3</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>                   <span class="c1">//initialize count3</span>
-               <span class="p">}</span>
-               <span class="k">break</span><span class="p">;</span>
-           <span class="k">case</span> <span class="nl">BLINK</span><span class="p">:</span>
-               <span class="n">count2</span><span class="o">++</span><span class="p">;</span>
-            <span class="c1">//    if(count2&gt;10){                //do not change state of leds till count2 becomes 10</span>
-                   <span class="n">count3</span><span class="o">--</span><span class="p">;</span>                    <span class="c1">//decrement no. of blinks</span>
-                   <span class="k">if</span><span class="p">(</span><span class="n">count3</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>      
-                      <span class="k">if</span><span class="p">(</span><span class="n">TA1CCR1</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
-                          <span class="n">TA1CCR1</span> <span class="o">=</span> <span class="mi">255</span><span class="p">;</span>        <span class="c1">//full brightness</span>
-                      <span class="k">else</span><span class="p">{</span>
-                          <span class="n">TA1CCR1</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>            <span class="c1">//zero brightness</span>
-                      <span class="p">}</span>
-                   <span class="p">}</span><span class="k">else</span><span class="p">{</span>
-                      <span class="n">TA1CCR1</span><span class="o">=</span><span class="mi">255</span><span class="p">;</span>              <span class="c1">//full brightness</span>
-                      <span class="n">dir</span> <span class="o">=</span> <span class="n">DOWN</span><span class="p">;</span>               <span class="c1">//change dir to decresing brightness</span>
-                   <span class="p">}</span>
-                   <span class="n">count2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>   
-               <span class="p">}</span>
-               <span class="k">break</span><span class="p">;</span>
-           <span class="k">case</span> <span class="nl">DOWN</span><span class="p">:</span>
-               <span class="n">TA1CCR1</span> <span class="o">=</span> <span class="n">TA1CCR1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>           <span class="c1">//decrement CCR1</span>
-               <span class="k">if</span><span class="p">(</span><span class="n">TA1CCR1</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
-                   <span class="n">dir</span> <span class="o">=</span> <span class="n">UP</span><span class="p">;</span>                    <span class="c1">//change direction to increasing</span>
-               <span class="p">}</span>
-               <span class="k">break</span><span class="p">;</span>
-       <span class="p">}</span>
-       <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>   
- <span class="p">}</span>
-<span class="p">}</span>
-<span class="c1">//@brief entry point for the code/</span>
-<span class="kt">void</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">P1DIR</span> <span class="o">|=</span> <span class="mh">0xFF</span><span class="p">;</span>
-    <span class="k">volatile</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>                    <span class="c1">// volatile to prevent optimization</span>
-        <span class="kt">uint32_t</span> <span class="n">lfsr</span> <span class="o">=</span> <span class="mh">0x81283723</span><span class="p">;</span>
-        <span class="kt">uint32_t</span> <span class="n">bit</span> <span class="o">=</span> <span class="mh">0x00000000</span><span class="p">;</span>
+/*brief entry point for TIMER1_interrupt vector */
+#pragma vector = TIMER1_A0_VECTOR
+__interrupt void Timer_A(void){
+   count++;                 
+   if(count&gt;100){  //enter if after 100 interrupts
+       switch(dir){
+           case UP:
+               TA1CCR1 = TA1CCR1+1;             //increment CCR1
+               if(TA1CCR1&gt;TA1CCR0){
+                   dir = BLINK;                 //change dir to BLINK
+                   count2=0;                    //initialize count2
+                   count3=10;                   //initialize count3
+               }
+               break;
+           case BLINK:
+               count2++;
+            //    if(count2&gt;10){                //do not change state of leds till count2 becomes 10
+                   count3--;                    //decrement no. of blinks
+                   if(count3&gt;0){      
+                      if(TA1CCR1==0)
+                          TA1CCR1 = 255;        //full brightness
+                      else{
+                          TA1CCR1=0;            //zero brightness
+                      }
+                   }else{
+                      TA1CCR1=255;              //full brightness
+                      dir = DOWN;               //change dir to decresing brightness
+                   }
+                   count2 = 0;   
+               }
+               break;
+           case DOWN:
+               TA1CCR1 = TA1CCR1 - 1;           //decrement CCR1
+               if(TA1CCR1==0){
+                   dir = UP;                    //change direction to increasing
+               }
+               break;
+       }
+       count=0;   
+ }
+}
+//@brief entry point for the code/
+void main(void) {
+    P1DIR |= 0xFF;
+    volatile unsigned int i;                    // volatile to prevent optimization
+        uint32_t lfsr = 0x81283723;
+        uint32_t bit = 0x00000000;
 
-    <span class="n">WDTCTL</span> <span class="o">=</span> <span class="n">WDTPW</span> <span class="o">|</span> <span class="n">WDTHOLD</span><span class="p">;</span>                   <span class="c1">// Stop watchdog timer</span>
-    <span class="n">register_settings_for_TIMER1</span><span class="p">();</span> 
-    <span class="n">__bis_SR_register</span><span class="p">(</span><span class="n">GIE</span><span class="p">);</span>                     <span class="c1">// Enable CPU Interrupt</span>
-    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
-        <span class="n">P1OUT</span> <span class="o">=</span> <span class="n">lfsr</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">;</span>                    <span class="c1">// toggle P1.0</span>
-        <span class="n">bit</span> <span class="o">=</span> <span class="p">((</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">21</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">0</span><span class="p">));</span>
-        <span class="n">lfsr</span> <span class="o">=</span> <span class="p">(</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">bit</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">);</span>
-        <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2500</span><span class="p">;</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">);</span>                  <span class="c1">// delay</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+    WDTCTL = WDTPW | WDTHOLD;                   // Stop watchdog timer
+    register_settings_for_TIMER1(); 
+    __bis_SR_register(GIE);                     // Enable CPU Interrupt
+    while(1){
+        P1OUT = lfsr &amp; 0xFF;                    // toggle P1.0
+        bit = ((lfsr &gt;&gt; 31) ^ (lfsr &gt;&gt; 21) ^ (lfsr &gt;&gt; 1) ^ (lfsr &gt;&gt; 0));
+        lfsr = (lfsr &gt;&gt; 1) | (bit &lt;&lt; 31);
+        for(i=2500; i&gt;0; i--);                  // delay
+    }
+}
+</code></pre>
                 
               
               
