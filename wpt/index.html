@@ -1,0 +1,506 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../images/electronics.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.7">
+    
+    
+      
+        <title>Wireless Power Transfer - Project-Documentations</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.c772ddf0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.7fa14f5b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#msp430-project-with-wireless-power-transfer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Project-Documentations" class="md-header__button md-logo" aria-label="Project-Documentations" data-md-component="logo">
+      
+  <img src="../images/electronics.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Project-Documentations
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Wireless Power Transfer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Project-Documentations" class="md-nav__button md-logo" aria-label="Project-Documentations" data-md-component="logo">
+      
+  <img src="../images/electronics.png" alt="logo">
+
+    </a>
+    Project-Documentations
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Wireless Power Transfer
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Wireless Power Transfer
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    OBJECTIVE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#block-diagram" class="md-nav__link">
+    BLOCK DIAGRAM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schematic" class="md-nav__link">
+    SCHEMATIC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#board-layout" class="md-nav__link">
+    BOARD LAYOUT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#completed-pcb-with-candles" class="md-nav__link">
+    COMPLETED PCB WITH CANDLES
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    CODE
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    OBJECTIVE
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#block-diagram" class="md-nav__link">
+    BLOCK DIAGRAM
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schematic" class="md-nav__link">
+    SCHEMATIC
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#board-layout" class="md-nav__link">
+    BOARD LAYOUT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#completed-pcb-with-candles" class="md-nav__link">
+    COMPLETED PCB WITH CANDLES
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    CODE
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="msp430-project-with-wireless-power-transfer"><strong>MSP430 Project with Wireless Power Transfer</strong></h1>
+<h2 id="objective"><strong>OBJECTIVE</strong></h2>
+<p>A wirelessly powered artwork with warm-white leds and flexible string of leds inside a fish bowl, controlled using a <strong>MSP430</strong> microcontroller.
+Power is transferred wirelessly using two coils, one used for transmitting and other for receiving.</p>
+<h2 id="block-diagram"><strong>BLOCK DIAGRAM</strong></h2>
+<p><img alt="Block Diagram" src="/images/BLOCK DIAGRAM(V3).png" /></p>
+<h2 id="schematic"><strong>SCHEMATIC</strong></h2>
+<p><img alt="Schematic Diagram" src="/images/SCHEMATIC_V4.png" /></p>
+<h2 id="board-layout"><strong>BOARD LAYOUT</strong></h2>
+<p><img alt="Schematic Diagram" src="/images/LAYOUT_V4.png" /></p>
+<h2 id="completed-pcb-with-candles"><strong>COMPLETED PCB WITH CANDLES</strong></h2>
+<p><img alt="Completed PCB" src="/images/COMPLETED.jpg" /></p>
+<h2 id="code"><strong>CODE</strong></h2>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span> <span class="cpf">&lt;msp430.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#define LED        BIT1                        </span><span class="c1">// LED Strip -&gt; P2.1</span>
+<span class="cp">#define UP        1                            </span><span class="c1">//Increasing Brightness </span>
+<span class="cp">#define DOWN      0                            </span><span class="c1">//Decreasing Brightness</span>
+<span class="cp">#define BLINK     2                            </span><span class="c1">// For blink of leds</span>
+
+
+<span class="cm">/**</span>
+<span class="cm"> * @brief</span>
+<span class="cm"> * These settings are wrt enabling TIMER1 on Lunchbox</span>
+<span class="cm"> **/</span>
+<span class="kt">void</span> <span class="nf">register_settings_for_TIMER1</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">P2DIR</span> <span class="o">|=</span> <span class="n">LED</span><span class="p">;</span>                          <span class="c1">// LED -&gt; Output</span>
+    <span class="n">P2SEL</span> <span class="o">|=</span> <span class="n">LED</span><span class="p">;</span>                          <span class="c1">// LED -&gt; Select Timer Output</span>
+
+    <span class="n">TA1CCR0</span> <span class="o">=</span> <span class="mi">255</span><span class="p">;</span>                         <span class="c1">// Set Timer0 PWM Period</span>
+    <span class="n">TA1CCTL1</span> <span class="o">=</span> <span class="n">OUTMOD_7</span><span class="p">;</span>                   <span class="c1">// Set TA1.1 Waveform Mode - Clear on Compare, Set on Overflow</span>
+    <span class="n">TA1CCR1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                           <span class="c1">// Set TA1.1 PWM duty cycle</span>
+    <span class="n">TA1CCTL0</span> <span class="o">=</span> <span class="n">CCIE</span><span class="p">;</span>                       <span class="c1">// CCR0 Enable Interrupt</span>
+    <span class="n">TA1CTL</span> <span class="o">=</span> <span class="n">TASSEL_2</span> <span class="o">+</span> <span class="n">MC_1</span><span class="p">;</span>              <span class="c1">// Timer Clock -&gt; SMCLK, Mode -&gt; Up</span>
+<span class="p">}</span>
+
+<span class="k">volatile</span> <span class="kt">int</span> <span class="n">dir</span> <span class="o">=</span> <span class="n">UP</span><span class="p">;</span>
+<span class="k">volatile</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                    <span class="c1">//for delay between change of dutycycle</span>
+<span class="k">volatile</span> <span class="kt">int</span> <span class="n">count2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                   <span class="c1">//for delay between blinking</span>
+<span class="k">volatile</span> <span class="kt">int</span> <span class="n">count3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                   <span class="c1">//for number of blinks between pwm</span>
+
+<span class="cm">/*brief entry point for TIMER1_interrupt vector */</span>
+<span class="cp">#pragma vector = TIMER1_A0_VECTOR</span>
+<span class="n">__interrupt</span> <span class="kt">void</span> <span class="n">Timer_A</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+   <span class="n">count</span><span class="o">++</span><span class="p">;</span>                 
+   <span class="k">if</span><span class="p">(</span><span class="n">count</span><span class="o">&gt;</span><span class="mi">100</span><span class="p">){</span>  <span class="c1">//enter if after 100 interrupts</span>
+       <span class="k">switch</span><span class="p">(</span><span class="n">dir</span><span class="p">){</span>
+           <span class="k">case</span> <span class="nl">UP</span><span class="p">:</span>
+               <span class="n">TA1CCR1</span> <span class="o">=</span> <span class="n">TA1CCR1</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>             <span class="c1">//increment CCR1</span>
+               <span class="k">if</span><span class="p">(</span><span class="n">TA1CCR1</span><span class="o">&gt;</span><span class="n">TA1CCR0</span><span class="p">){</span>
+                   <span class="n">dir</span> <span class="o">=</span> <span class="n">BLINK</span><span class="p">;</span>                 <span class="c1">//change dir to BLINK</span>
+                   <span class="n">count2</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>                    <span class="c1">//initialize count2</span>
+                   <span class="n">count3</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>                   <span class="c1">//initialize count3</span>
+               <span class="p">}</span>
+               <span class="k">break</span><span class="p">;</span>
+           <span class="k">case</span> <span class="nl">BLINK</span><span class="p">:</span>
+               <span class="n">count2</span><span class="o">++</span><span class="p">;</span>
+            <span class="c1">//    if(count2&gt;10){                //do not change state of leds till count2 becomes 10</span>
+                   <span class="n">count3</span><span class="o">--</span><span class="p">;</span>                    <span class="c1">//decrement no. of blinks</span>
+                   <span class="k">if</span><span class="p">(</span><span class="n">count3</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">){</span>      
+                      <span class="k">if</span><span class="p">(</span><span class="n">TA1CCR1</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+                          <span class="n">TA1CCR1</span> <span class="o">=</span> <span class="mi">255</span><span class="p">;</span>        <span class="c1">//full brightness</span>
+                      <span class="k">else</span><span class="p">{</span>
+                          <span class="n">TA1CCR1</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>            <span class="c1">//zero brightness</span>
+                      <span class="p">}</span>
+                   <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                      <span class="n">TA1CCR1</span><span class="o">=</span><span class="mi">255</span><span class="p">;</span>              <span class="c1">//full brightness</span>
+                      <span class="n">dir</span> <span class="o">=</span> <span class="n">DOWN</span><span class="p">;</span>               <span class="c1">//change dir to decresing brightness</span>
+                   <span class="p">}</span>
+                   <span class="n">count2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>   
+               <span class="p">}</span>
+               <span class="k">break</span><span class="p">;</span>
+           <span class="k">case</span> <span class="nl">DOWN</span><span class="p">:</span>
+               <span class="n">TA1CCR1</span> <span class="o">=</span> <span class="n">TA1CCR1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>           <span class="c1">//decrement CCR1</span>
+               <span class="k">if</span><span class="p">(</span><span class="n">TA1CCR1</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+                   <span class="n">dir</span> <span class="o">=</span> <span class="n">UP</span><span class="p">;</span>                    <span class="c1">//change direction to increasing</span>
+               <span class="p">}</span>
+               <span class="k">break</span><span class="p">;</span>
+       <span class="p">}</span>
+       <span class="n">count</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>   
+ <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">//@brief entry point for the code/</span>
+<span class="kt">void</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">P1DIR</span> <span class="o">|=</span> <span class="mh">0xFF</span><span class="p">;</span>
+    <span class="k">volatile</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>                    <span class="c1">// volatile to prevent optimization</span>
+        <span class="kt">uint32_t</span> <span class="n">lfsr</span> <span class="o">=</span> <span class="mh">0x81283723</span><span class="p">;</span>
+        <span class="kt">uint32_t</span> <span class="n">bit</span> <span class="o">=</span> <span class="mh">0x00000000</span><span class="p">;</span>
+
+    <span class="n">WDTCTL</span> <span class="o">=</span> <span class="n">WDTPW</span> <span class="o">|</span> <span class="n">WDTHOLD</span><span class="p">;</span>                   <span class="c1">// Stop watchdog timer</span>
+    <span class="n">register_settings_for_TIMER1</span><span class="p">();</span> 
+    <span class="n">__bis_SR_register</span><span class="p">(</span><span class="n">GIE</span><span class="p">);</span>                     <span class="c1">// Enable CPU Interrupt</span>
+    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+        <span class="n">P1OUT</span> <span class="o">=</span> <span class="n">lfsr</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">;</span>                    <span class="c1">// toggle P1.0</span>
+        <span class="n">bit</span> <span class="o">=</span> <span class="p">((</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">31</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">21</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">0</span><span class="p">));</span>
+        <span class="n">lfsr</span> <span class="o">=</span> <span class="p">(</span><span class="n">lfsr</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">bit</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">2500</span><span class="p">;</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">);</span>                  <span class="c1">// delay</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+      
+        <a href=".." class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Home
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.65ce87ac.min.js"></script>
+      
+    
+  </body>
+</html>
